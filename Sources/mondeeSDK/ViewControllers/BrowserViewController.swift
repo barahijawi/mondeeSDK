@@ -70,6 +70,8 @@ public class BrowserViewController: UIViewController {
         // Add the browser view
         view.addSubview(browserView)
         view.addSubview(loadingView)
+        loadingView.center = view.center
+
     }
     
     // When this view controller is presented, hide the nav bar to maximize screen real estate
