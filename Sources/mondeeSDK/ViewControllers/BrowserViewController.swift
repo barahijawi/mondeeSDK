@@ -10,7 +10,13 @@ public class BrowserViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
+    // Create a loading view
+        private let loadingView: UIActivityIndicatorView = {
+            let view = UIActivityIndicatorView(style: .large)
+            view.color = .gray
+            view.translatesAutoresizingMaskIntoConstraints = false
+            return view
+        }()
     // An array of domain extensions used to deduce if a user is searching for specific url or wants to search by keyword
     // Ideally this would be have a more robust deduction of whether a user is looking to use a search engine vs.
     // Manually adding a site by URL
@@ -63,6 +69,7 @@ public class BrowserViewController: UIViewController {
         
         // Add the browser view
         view.addSubview(browserView)
+        view.addSubview(loadingView)
     }
     
     // When this view controller is presented, hide the nav bar to maximize screen real estate
@@ -170,6 +177,7 @@ extension BrowserViewController: BrowserViewControllerDelegate {
 extension BrowserViewController: WKNavigationDelegate {
     // Check if the user navigated to a new page from within the webView content (not search bar)
     public func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        loadingView.startAnimating()
         let currentPage = tabManager.selectedTab.getCurrentPage()
         
         if let url = webView.url?.absoluteString, url != currentPage {
@@ -183,6 +191,8 @@ extension BrowserViewController: WKNavigationDelegate {
     // Each time a page is done loading, add a snapshot of the content to the tab manager
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         if #available(iOS 11.0, *) {
+            loadingView.stopAnimating()
+                   loadingView.isHidden = true
             webView.takeSnapshot(with: nil, completionHandler: { (image, error) in
                 if let snapshotImage = image {
                     self.tabManager.selectedTab.contentSnapshot = snapshotImage
@@ -192,6 +202,12 @@ extension BrowserViewController: WKNavigationDelegate {
         // Update with the current website title
         tabManager.selectedTab.updatePageTitle(webView.title)
     }
+    
+    // Handle errors
+      public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+          loadingView.stopAnimating()
+          loadingView.isHidden = true
+      }
 }
 
 // MARK: - UITextFieldDelegate methods
