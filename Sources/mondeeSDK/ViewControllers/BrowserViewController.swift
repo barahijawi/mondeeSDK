@@ -26,7 +26,8 @@ public class BrowserViewController: UIViewController {
         return [ ".com", ".net", ".org", ".co" ]
     }()
     
-    var tabManager: TabManager
+    public var tabManager: TabManager
+    
     @objc public func newWindowButtonPressed() {
            // Create a new browser window with one tab
            let tabManager = TabManager() // Initialize a new TabManager

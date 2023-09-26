@@ -8,7 +8,7 @@
 import UIKit
 
 // MARK: TabManager - Manages the current tabs throughout the app
-@objcMembers class TabManager: NSObject {
+@objcMembers public class TabManager: NSObject {
     var tabs = [Tab]()
     var selectedTabIndex: Int
 
