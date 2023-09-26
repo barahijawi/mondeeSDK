@@ -21,7 +21,7 @@ import UIKit
     // Default page to direct user to
     let homePage = "http://www.google.com/"
     
-    override init(){
+   public override init(){
         let defaultTab = Tab(index: 0, homePage: homePage)
         selectedTabIndex = 0
         tabs.append(defaultTab)
