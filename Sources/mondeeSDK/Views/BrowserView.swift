@@ -14,7 +14,23 @@ class BrowserView: UIView {
         return webView
     }()
 
-       
+    lazy var customNavBar: UINavigationBar = {
+            let navBar = UINavigationBar()
+            navBar.translatesAutoresizingMaskIntoConstraints = false
+
+            // Create left and right bar button items
+            let leftButton = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: delegate, action: #selector(delegate?.backPressed))
+            let rightButton = UIBarButtonItem(image: UIImage(systemName: "arrow.right"), style: .plain, target: delegate, action: #selector(delegate?.forwardPressed))
+
+            // Customize the appearance of the navigation bar
+            let navItem = UINavigationItem(title: "")
+            navItem.leftBarButtonItem = leftButton
+            navItem.rightBarButtonItem = rightButton
+            navBar.items = [navItem]
+
+            return navBar
+        }()
+
     // User input field for the search they are executing
     lazy var urlTextField: UITextField = {
         let textField = UITextField()
@@ -106,6 +122,7 @@ class BrowserView: UIView {
     
     // Adds subviews and arranged subviews to their parents
     private func setupViews() {
+        self.addSubview(customNavBar)
         self.addSubview(urlTextField)
         self.addSubview(webView)
         self.addSubview(bottomBarStack)
@@ -115,10 +132,17 @@ class BrowserView: UIView {
 //        bottomBarStack.addArrangedSubview(shareButton)
 //        bottomBarStack.addArrangedSubview(bookmarksButton)
 //        bottomBarStack.addArrangedSubview(tabButton)
+        
+        bottomBarStack.addArrangedSubview(backButton)
+        bottomBarStack.addArrangedSubview(forwardButton)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        customNavBar.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
+             customNavBar.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+             customNavBar.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+
         webView.frame = bounds
                 bottomBarStack.frame = CGRect(x: 0, y: bounds.height - 50, width: bounds.width, height: 50)
         urlTextField.isHidden = true
