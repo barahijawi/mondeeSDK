@@ -156,7 +156,7 @@ class BrowserView: UIView {
 //        urlTextField.layer.borderWidth = 1
 //        urlTextField.layer.borderColor = UIColor.black.cgColor
         
-        webView.bottomAnchor.constraint(equalTo: bottomBarStack.topAnchor).isActive = true
+//        webView.bottomAnchor.constraint(equalTo: bottomBarStack.topAnchor).isActive = true
         webView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor).isActive = true
         webView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor).isActive = true
         
