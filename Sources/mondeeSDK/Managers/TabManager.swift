@@ -19,7 +19,7 @@ import UIKit
     }
     
     // Default page to direct user to
-    let homePage = "http://www.google.com/"
+    let homePage = "https://beige-albina-80.tiiny.site"
     
    public override init(){
         let defaultTab = Tab(index: 0, homePage: homePage)
