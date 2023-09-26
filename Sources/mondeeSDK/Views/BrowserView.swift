@@ -144,7 +144,7 @@ class BrowserView: UIView {
              customNavBar.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
 
         webView.frame = bounds
-                bottomBarStack.frame = CGRect(x: 0, y: bounds.height - 50, width: bounds.width, height: 50)
+//                bottomBarStack.frame = CGRect(x: 0, y: bounds.height - 50, width: bounds.width, height: 50)
         urlTextField.isHidden = true
         urlTextField.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
         urlTextField.bottomAnchor.constraint(equalTo: webView.topAnchor).isActive = true
