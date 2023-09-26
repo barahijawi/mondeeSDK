@@ -125,16 +125,16 @@ class BrowserView: UIView {
         self.addSubview(customNavBar)
         self.addSubview(urlTextField)
         self.addSubview(webView)
-        self.addSubview(bottomBarStack)
+//        self.addSubview()
         
-        bottomBarStack.addArrangedSubview(backButton)
+//        bottomBarStack.addArrangedSubview(backButton)
         bottomBarStack.addArrangedSubview(forwardButton)
 //        bottomBarStack.addArrangedSubview(shareButton)
 //        bottomBarStack.addArrangedSubview(bookmarksButton)
 //        bottomBarStack.addArrangedSubview(tabButton)
         
-        bottomBarStack.addArrangedSubview(backButton)
-        bottomBarStack.addArrangedSubview(forwardButton)
+//        bottomBarStack.addArrangedSubview(backButton)
+//        bottomBarStack.addArrangedSubview(forwardButton)
     }
     
     override func layoutSubviews() {
@@ -160,9 +160,9 @@ class BrowserView: UIView {
         webView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor).isActive = true
         webView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor).isActive = true
         
-        bottomBarStack.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        bottomBarStack.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
-        bottomBarStack.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
-        bottomBarStack.heightAnchor.constraint(equalToConstant: 50).isActive = true
+//        bottomBarStack.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor).isActive = true
+//        bottomBarStack.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
+//        bottomBarStack.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
+//        bottomBarStack.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
 }
