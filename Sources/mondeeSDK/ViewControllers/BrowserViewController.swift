@@ -43,7 +43,7 @@ public class BrowserViewController: UIViewController {
         reloadPage()
     }
 
-    init(_ tabManager: TabManager) {
+   public init(_ tabManager: TabManager) {
         self.tabManager = tabManager
         super.init(nibName: nil, bundle: nil)
     }
