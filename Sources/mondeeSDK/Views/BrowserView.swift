@@ -13,6 +13,16 @@ class BrowserView: UIView {
         webView.sizeToFit()
         return webView
     }()
+    override func layoutSubviews() {
+           super.layoutSubviews()
+
+           // Set the frames for subviews to fill the entire screen
+           webView.frame = bounds
+           bottomBarStack.frame = CGRect(x: 0, y: bounds.height - 50, width: bounds.width, height: 50)
+           
+           // You can adjust other subviews' frames here if needed
+       }
+       
     // User input field for the search they are executing
     lazy var urlTextField: UITextField = {
         let textField = UITextField()
