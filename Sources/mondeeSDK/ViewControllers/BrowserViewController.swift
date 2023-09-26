@@ -27,7 +27,16 @@ public class BrowserViewController: UIViewController {
     }()
     
     var tabManager: TabManager
-    
+    @objc public func newWindowButtonPressed() {
+           // Create a new browser window with one tab
+           let tabManager = TabManager() // Initialize a new TabManager
+           let newBrowserViewController = BrowserViewController(tabManager) // Initialize a new BrowserViewController with the TabManager
+
+           // Optionally, you can customize the appearance of the new window
+           newBrowserViewController.view.backgroundColor = .white // Example background color
+
+           navigationController?.pushViewController(newBrowserViewController, animated: true)
+       }
     public func openNewTab() {
         tabManager.newTab()
         reloadPage()
