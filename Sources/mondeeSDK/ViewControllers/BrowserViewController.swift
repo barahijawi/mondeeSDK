@@ -137,6 +137,11 @@ extension BrowserViewController: BrowserViewControllerDelegate {
         reloadPage()
         navigationController?.popViewController(animated: true)
     }
+@objc public func openNewTab(url :String) {
+        tabManager.newTab(url: url)
+        reloadPage()
+        navigationController?.popViewController(animated: true)
+    }
     // Bookmarks view controller presented
     @objc func bookmarksPressed() {
         let vc = BookmarksViewController()
