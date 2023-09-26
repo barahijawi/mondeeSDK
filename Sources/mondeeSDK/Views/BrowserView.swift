@@ -3,14 +3,35 @@
 import WebKit
 import UIKit
 
-class BrowserView: UIView {
+class BrowserView: UIView, WKScriptMessageHandler {
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        if message.name == "mondeeMessageHandler" {
+                if let messageBody = message.body as? String {
+                    // Handle the message received from JavaScript
+                    print("Received message from JavaScript: \(messageBody)")
+                    
+                
+                }
+            }
+    }
+    
     // Displays web content
     lazy var webView: WKWebView = {
-        let webView = WKWebView()
+        let config = WKWebViewConfiguration()
+        let userContentController = WKUserContentController()
+
+        // Add the message handler and define a name for it
+        userContentController.add(self, name: "myMessageHandler")
+
+        config.userContentController = userContentController
+        
+        
+        let webView = WKWebView(frame: .zero, configuration: config)
         webView.translatesAutoresizingMaskIntoConstraints = false
         webView.allowsBackForwardNavigationGestures = true
         webView.scrollView.delegate = nil
         webView.sizeToFit()
+ 
         return webView
     }()
 

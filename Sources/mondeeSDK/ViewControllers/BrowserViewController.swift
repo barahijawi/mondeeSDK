@@ -2,7 +2,8 @@
 import UIKit
 import WebKit
 
-public class BrowserViewController: UIViewController {
+public class BrowserViewController: UIViewController{
+    
     // This view contains all of the UI elements of the BrowserViewController
     private lazy var browserView: BrowserView = {
         let view = BrowserView()
@@ -67,6 +68,7 @@ public class BrowserViewController: UIViewController {
             browserView.webView.load(URLRequest(url: url))
         }
         
+   
         // Add the browser view
         view.addSubview(browserView)
         view.addSubview(loadingView)
