@@ -27,11 +27,11 @@ import UIKit
         tabs.append(defaultTab)
     }
     
-    func newTab() {
+    func newTab(url :String) {
         // Append the new tab to the end of the tabs array
         let index = tabs.count
         
-        let newTab = Tab(index: index, homePage: homePage)
+        let newTab = Tab(index: index, homePage: url)
         tabs.append(newTab)
         
         selectedTabIndex = index

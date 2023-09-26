@@ -39,7 +39,7 @@ public class BrowserViewController: UIViewController {
            navigationController?.pushViewController(newBrowserViewController, animated: true)
        }
     public func openNewTab() {
-        tabManager.newTab()
+        tabManager.newTab(url: "https://google.com")
         reloadPage()
     }
 
@@ -133,7 +133,7 @@ extension BrowserViewController: BrowserViewControllerDelegate {
     }
     // New tab is added
     @objc func newTabPressed() {
-        tabManager.newTab()
+        tabManager.newTab(url: "https://google.com")
         reloadPage()
         navigationController?.popViewController(animated: true)
     }

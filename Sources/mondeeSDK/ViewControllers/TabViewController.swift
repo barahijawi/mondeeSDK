@@ -65,7 +65,7 @@ extension TabViewController: TabViewControllerDelegate {
         
         // If no tabs remaining, create a new one
         if delegate?.tabManager.tabs.count == 0 {
-            delegate?.tabManager.newTab()
+            delegate?.tabManager.newTab(url: "https://google.com")
             delegate?.reloadPage()
         }
         
