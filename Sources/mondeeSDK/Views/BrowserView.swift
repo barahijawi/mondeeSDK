@@ -1,9 +1,4 @@
-// 
-//  BrowserView.swift
-//  iOS-Web-Browser
-// 
-//  Created by Sam Doggett on 9/17/21.
-// 
+
 
 import WebKit
 import UIKit
